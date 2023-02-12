@@ -22,7 +22,7 @@
 
 const objLat = (obj) => {
     // write your code here
-    return `my name is ${obj.firstName.toUpperCase()} ${obj.lastName.toUpperCase()} I am ${obj.age} YO, and I love ${obj.hobby}.`
+    return `my name is ${obj.firstName.charAt(0).toUpperCase() + obj.firstName.slice(1)} ${obj.lastName.charAt(0).toUpperCase() +obj.lastName.slice(1)} I am ${obj.age} YO, and I love ${obj.hobby}.`
 };
 // -------------------------------------------------------------------------------------------------------
 
@@ -87,9 +87,16 @@ const objLat = (obj) => {
 
 const cvFormatter = (arr) => {
     // write your code here
-    if (arr.yearsOfExperience > 1){
-        return `fullName: " ${arr.firstName} ${arr.lastName} "  <br> tech: "${arr.tech}"`
+    let output=[];
+    for (let i=0; i<arr.length ;i++){
+        if (arr[i].yearsOfExperience > 1) {
+            let fullName = `fullName: " ${arr[i].firstName} ${arr[i].lastName || ""} " `;
+            let tech = `tech: "${arr[i].tech}"`;
+            output.push({fullName , tech});
+              
+        }
     }
+    return output;
 };
 // -------------------------------------------------------------------------------------------------------
 
@@ -116,6 +123,42 @@ const cvFormatter = (arr) => {
 
 const applicationsStatics = (arr) => {
     // write your code here
+    let python = 0;
+    let js = 0;
+    let dotNet = 0;
+    let java = 0;
+    let totalApplicants = 0;
+    let rejectedApplicants = 0;
+    for (let i=0; i<arr.length ;i++){
+        if (arr[i].yearsOfExperience < 1 || arr[i].firstName == "" || arr[i].firstName == null){
+            rejectedApplicants +=1;
+
+        }
+        else {
+            if (arr[i].tech == "JS"){
+                js+=1;
+            }
+            else if (arr[i].tech == ".Net"){
+                dotNet+=1;
+            }
+            else if (arr[i].tech == "python"){
+                python+=1;
+            }
+            else if (arr[i].tech == "java"){
+                java+=1;
+            }
+            
+        }
+        totalApplicants+=1;
+
+    }
+    return { python_devs: python,
+    javaScript_devs: js,
+    dotNet_devs: dotNet,
+    java_devs: java,
+    totalApplicants: totalApplicants,
+    rejectedApplicants: rejectedApplicants };
+
 };
 // -------------------------------------------------------------------------------------------------------
 
