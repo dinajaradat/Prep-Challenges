@@ -90,9 +90,12 @@ const cvFormatter = (arr) => {
     let output=[];
     for (let i=0; i<arr.length ;i++){
         if (arr[i].yearsOfExperience > 1) {
-            let fullName = `fullName: " ${arr[i].firstName} ${arr[i].lastName || ""} " `;
-            let tech = `tech: "${arr[i].tech}"`;
-            output.push({fullName , tech});
+            let fullName = arr[i].firstName;
+            if (arr[i].lastName){
+                fullName += ` ${arr[i].lastName}`
+            }
+
+            output.push({fullName , tech: arr[i].tech});
               
         }
     }
@@ -286,6 +289,8 @@ let data = {
 
 const classesAvg = (data) => {
     // write your code here
+    
+
 };
 // -------------------------------------------------------------------------------------------------------
 
