@@ -24,7 +24,7 @@
         {
             "language": "javascript",
             "source": [
-                "function equalizeArray(arr) {\n    // Write your code here\n    let max=0;\n    num = arr[0];\n    for (let i=0; i<arr.length ; i++){\n        let count =0;\n        for (let w=0; w<arr.length ; w++){\n            if (arr[i] == arr[w]){\n                count +=1\n            }\n        }\n        if (count>max){\n            num = arr[i];\n            max = count;\n        }\n    }\n    return arr.length - max;\n\n}\n"
+                "function equalizeArray(arr) {\n    // Write your code here\n    let frequency = {};\n    arr.forEach((num) => {\n        if (frequency[num] !== undefined) {\n          frequency[num]+=1;\n        } else {\n          frequency[num] = 1;\n        }\n      });\n      \n      let max = 0;\n      for (let num in frequency) {\n        if (frequency[num] > max) {\n          max = frequency[num];\n        }\n      }\n      \n      return arr.length - max;\n\n}\n"
             ],
             "outputs": []
         },
