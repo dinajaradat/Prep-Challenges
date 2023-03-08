@@ -38,7 +38,7 @@ const reverseString = (string) => {
 const detectFace = (arr) => {
     //write your code here ...
     return arr.filter((item)=>{
-        return /[\^][\_^][\^]/.test(item)
+        return /[\^][\_][\^]/.test(item)
     });
 }
 // -------------------------------------------------------------------------------------------------------
