@@ -16,7 +16,28 @@
 
 const recursionPattern = (int1, int2) => {
     // write your code here
+    const output = [];
+    output.push(int1)
 
+    const recursion1 = (num) => {
+        if (num > 0) {
+            output.push(num - int2);
+            recursion1(num - int2);
+        } else if (num < 0) {
+            recursion2(num);
+        }
+    };
+
+    const recursion2 = (num) => {
+        if (num < int1) {
+            output.push(num + int2);
+            recursion2(num + int2);
+        }
+    };
+
+    recursion1(int1);
+
+    return output;
 
 
 }
@@ -38,9 +59,13 @@ const recursionPattern = (int1, int2) => {
 
 const filterLinks = (str) => {
     // write your code here
-    const regex = /^[\w\w\w\.]+[a-zA-Z]+\.(com|org|net)/;
-    const link = regex.test(str);
-    return link ? link[0] : null;
+    const regex = /href="(http:\/{0,2})?([^"]+\.(com|org|net))"/i;
+    const match = str.match(regex);
+    if (match) {
+        //console.log(match);
+        return match[2];
+    }
+    return null;
 }
 // -------------------------------------------------------------------------------------------------------
 
